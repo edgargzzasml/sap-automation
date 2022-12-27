@@ -24,12 +24,12 @@ resource "azurerm_key_vault" "kv_user" {
       bypass         = "AzureServices"
       default_action = local.management_subnet_exists ? "Deny" : "Allow"
 
-      #ip_rules = compact(
-      #  [
-      #    length(local.deployer_public_ip_address) > 0 ? local.deployer_public_ip_address : "",
-      ##    length(var.Agent_IP) > 0 ? var.Agent_IP : ""
-      #  ]
-      #)
+      ip_rules = compact(
+        [
+          length(local.deployer_public_ip_address) > #0 ? local.deployer_public_ip_address : "",
+          length(var.Agent_IP) > 0 ? var.Agent_IP : ""
+        ]
+      )
 
       virtual_network_subnet_ids = compact(
         [

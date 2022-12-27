@@ -12,11 +12,13 @@
   block:
 
     - name:                            "5.6 SCSERS - RHEL - Configure cluster default properties"
+      become:                          true
       ansible.builtin.shell: |
                                        pcs resource defaults resource-stickiness=1
                                        pcs resource defaults migration-threshold=3
 
     - name:                            "5.6 SCSERS - RHEL - Put Secondary host on standby"
+      become:                          true
       ansible.builtin.command:         pcs node standby {{ secondary_instance_name }}
 
     - name:                            "5.6 SCSERS - RHEL - Set fact for ASCS Filesystem"
