@@ -130,7 +130,7 @@ stages:
                   #echo $ARM_CLIENT_SECRET
                   #ARM_SECRET=$(echo "$ARM_CLIENT_SECRET" | sed "s#[);]#\\\&#g")
                   echo "$ARM_CLIENT_SECRET"
-                  #az login --service-principal -u "$ARM_CLIENT_ID" -p "$ARM_CLIENT_SECRET" --tenant "$ARM_TENANT_ID" --output none
+                  az login --service-principal -u "$ARM_CLIENT_ID" -p "$ARM_CLIENT_SECRET" --tenant "$ARM_TENANT_ID" --output none
                   return_code=$?
                   if [ 0 != $return_code ]; then
                     echo -e "$boldred--- Login failed ---$reset"
